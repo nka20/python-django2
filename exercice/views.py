@@ -5,7 +5,7 @@ from .models import *
 from .serializers import *
 
 class ProduitViewset(viewsets.ModelViewSet):
-    queryset= Produit.objects.all()
+    queryset= Produit.objects.all() 
     permission_classes= IsAuthenticatedOrReadOnly,
     serializer_class=ProduitSerializer
 
