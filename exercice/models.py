@@ -16,4 +16,5 @@ class Vente(models.Model):
     nom=models.ForeignKey(Produit,on_delete=models.PROTECT)
     quantite= models.PositiveIntegerField()
     prix_total=models.FloatField()
+    utilisateur=models.ForeignKey(User,on_delete=models.PROTECT)
 

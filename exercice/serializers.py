@@ -12,4 +12,4 @@ class VenteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vente
         fields = "__all__"
-        read_only_fields = 'prix_total',
+        read_only_fields = 'prix_total','utilisateur',
