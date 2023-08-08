@@ -14,7 +14,7 @@ class ProduitSerializer(serializers.ModelSerializer):
         data=super().to_representation(instance)
         #data['exploit']="ken allan"
         data['ineza']=instance.nom
-        return data,
+        return data
 class VenteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vente
@@ -26,4 +26,4 @@ class VenteSerializer(serializers.ModelSerializer):
         day=super().to_representation(instance)
         #data['exploit']="ken allan"
         day['prix unitaire']=instance.nom.prix_unitaire #nom le foreign key pour appeler ceux du premier tableau
-        return day,
+        return day

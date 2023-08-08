@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Produit(models.Model):
     id=models.AutoField(primary_key=True)
     nom=models.CharField(max_length=50)
-    prix_unitaire=models.IntegerField(unique=True)
+    prix_unitaire=models.IntegerField()
     utilisateur=models.ForeignKey(User,on_delete=models.PROTECT)
 
 

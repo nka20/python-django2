@@ -1,3 +1,4 @@
+from datetime import timedelta
 """
 Django settings for akabazo project.
 
@@ -127,5 +128,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK= {
     'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE':2
+    'PAGE_SIZE':2,
+    
+    'DEFAULT_AUTHENTIFICATION_CLASSES':{
+        'rest_framework_simplejwt.authentification.JWTauthentification',
+        'rest_framework.authentification.sessionAuthentification',
+    }
+}
+
+SIMPLE_JWT={
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=19),
 }
