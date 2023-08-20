@@ -25,5 +25,5 @@ class VenteSerializer(serializers.ModelSerializer):
     def to_representation(self,instance):
         day=super().to_representation(instance)
         #data['exploit']="ken allan"
-        day['prix unitaire']=instance.nom.prix_unitaire #nom le foreign key pour appeler ceux du premier tableau
+        day['prix_unitaire']=instance.nom.prix_unitaire #nom le foreign key pour appeler ceux du premier tableau
         return day
