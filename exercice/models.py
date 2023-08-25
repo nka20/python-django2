@@ -7,7 +7,6 @@ class Produit(models.Model):
     prix_unitaire=models.IntegerField()
     utilisateur=models.ForeignKey(User,on_delete=models.PROTECT)
 
-
     def __str__(self):
        return f" {self.nom}"
 

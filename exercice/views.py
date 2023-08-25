@@ -1,5 +1,7 @@
 from rest_framework import viewsets,mixins
 from rest_framework.permissions import *
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.authentication import SessionAuthentication
 
 from .models import *
 from .serializers import *
@@ -7,6 +9,7 @@ from .serializers import *
 class ProduitViewset(viewsets.ModelViewSet):
     queryset= Produit.objects.all() 
     permission_classes= IsAuthenticatedOrReadOnly,
+    authentication_classes= JWTAuthentication, SessionAuthentication
     serializer_class=ProduitSerializer
 
     def perform_create(self,serializer):
@@ -16,6 +19,7 @@ class ProduitViewset(viewsets.ModelViewSet):
 class VenteViewset(viewsets.ModelViewSet):
     queryset= Vente.objects.all()
     permission_classes= IsAuthenticatedOrReadOnly,
+    authentication_classes= JWTAuthentication, SessionAuthentication
     serializer_class=VenteSerializer
 
 

@@ -12,9 +12,9 @@ class ProduitSerializer(serializers.ModelSerializer):
         #pour ajouter un autre tableau dans le donner qu'on veut
     def to_representation(self,instance):
         data=super().to_representation(instance)
-        #data['exploit']="ken allan"
+        data['exploit']="ken allan"
         data['ineza']=instance.nom
-        return data
+        return data 
 class VenteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vente
