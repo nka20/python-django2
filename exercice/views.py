@@ -28,5 +28,5 @@ class VenteViewset(viewsets.ModelViewSet):
         quantite=data['quantite']
         produit=data['nom']
         prix=produit.prix_unitaire
-        serializer.save(prix_total=quantite * prix,utilisateur=self.request.user )
+        serializer.save(nom=data['nom'],prix_unique=prix,prix_total=quantite * prix,utilisateur=self.request.user )
         return serializer

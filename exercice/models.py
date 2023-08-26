@@ -15,5 +15,6 @@ class Vente(models.Model):
     nom=models.ForeignKey(Produit,on_delete=models.SET_NULL, null=True)# pour garder les donnee sur ionic meme si on supprime le foreign key relier
     quantite= models.PositiveIntegerField()
     prix_total=models.FloatField()
+    prix_unique=models.PositiveIntegerField()
     utilisateur=models.ForeignKey(User,on_delete=models.PROTECT)
 
