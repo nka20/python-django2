@@ -12,7 +12,7 @@ class Produit(models.Model):
 
 class Vente(models.Model):
     id=models.AutoField(primary_key=True)
-    nom=models.ForeignKey(Produit,on_delete=models.PROTECT)
+    nom=models.ForeignKey(Produit,on_delete=models.SET_NULL, null=True)
     quantite= models.PositiveIntegerField()
     prix_total=models.FloatField()
     utilisateur=models.ForeignKey(User,on_delete=models.PROTECT)
