@@ -12,7 +12,7 @@ class Produit(models.Model):
 
 class Vente(models.Model):
     id=models.AutoField(primary_key=True)
-    nom=models.ForeignKey(Produit,on_delete=models.SET_NULL, null=True)# pour garder les donnee sur ionic meme si on supprime le foreign key relier
+    nom=models.ForeignKey(Produit,on_delete=models.CASCADE)# pour garder les donnee meme si on laisse un null sur ionic meme si on supprime le foreign key relier
     quantite= models.PositiveIntegerField()
     prix_total=models.FloatField()
     prix_unique=models.PositiveIntegerField()
