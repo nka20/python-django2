@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'exercice',
+    'django_filters',
     'corsheaders',
     'rest_framework',
 ]
@@ -137,7 +138,8 @@ REST_FRAMEWORK= {
     'DEFAULT_AUTHENTIFICATION_CLASSES':{
         'rest_framework_simplejwt.authentification.JWTauthentification',
         'rest_framework.authentification.sessionAuthentification',
-    }
+    },
+    'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 SIMPLE_JWT={

@@ -26,7 +26,7 @@ routers.register("vente",VenteViewset)
 
 urlpatterns = [
     path("", include(routers.urls)),
-    path('login/',TokenObtainPairView.as_view()),
+    path('login/',TokenPairView.as_view()),# fonction avec TokenObtainPairView.as_view()
     path('refresh/',TokenRefreshView.as_view()),
     path('api-auth/', include('rest_framework.urls')),#pour authentifier et se deconnecter
 ]
