@@ -5,6 +5,8 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 
 from .models import *
 from .serializers import *
@@ -40,6 +42,10 @@ class VenteViewset(viewsets.ModelViewSet):
     permission_classes= IsAuthenticatedOrReadOnly,
     authentication_classes= JWTAuthentication, SessionAuthentication
     serializer_class=VenteSerializer
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter]
+    filterset_fields = ['nom',]
+    search_fields = ['nom__nom',]
+
 
 
     def perform_create(self, serializer):
@@ -50,16 +56,16 @@ class VenteViewset(viewsets.ModelViewSet):
         serializer.save(nom=data['nom'],prix_unique=prix,prix_total=quantite * prix,utilisateur=self.request.user )
         return serializer
 
-        @action(methods=['POST'],
-        detail=False,
-        url_name=r"search",
-        url_path=r"search",
-        permission_classes=[IsAuthenticated],
-        serializer_class=SearchSerializer
-         )
-        def search(self,request):
-            data=request.data
-            ventes=Vente.objects.filter(nom__icontains=data['keyword'])
-            serializer=VenteSerializer(ventes,many=True)
-            return Response(serializer.data,200)
+    @action(methods=['POST'],
+    detail=False,
+    url_name=r"search",
+    url_path=r"search",
+    permission_classes=[IsAuthenticated],
+    serializer_class=SearchSerializer
+        )
+    def search(self,request):
+        data=request.data
+        ventes=Vente.objects.filter(nom__icontains=data['keyword'])
+        serializer=VenteSerializer(ventes,many=True)
+        return Response(serializer.data,200)
 
